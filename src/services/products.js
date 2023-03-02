@@ -15,7 +15,15 @@ const getById = async (id) => {
   return { code: 200, content: result };
 };
 
+const newProduct = async (name) => {
+  const result = await models.products.newProduct(name);
+  const { content } = await getById(result);
+
+  return { code: 201, content };
+};
+
 module.exports = {
   getAll,
   getById,
+  newProduct,
 };
