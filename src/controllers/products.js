@@ -18,8 +18,16 @@ const newProduct = async (req, res) => {
   return res.status(result.code).json(result.content);
 };
 
+const update = async (req, res) => {
+  const { id } = req.params;
+  const { name } = req.body;
+  const result = await services.products.update(id, name);
+  return res.status(result.code).json(result.content);
+};
+
 module.exports = {
   getAll,
   getById,
   newProduct,
+  update,
 };

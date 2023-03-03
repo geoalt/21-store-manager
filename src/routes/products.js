@@ -14,4 +14,8 @@ products.post('/',
   middlewares.validadeName,
   controllers.products.newProduct);
 
+products.put('/:id',
+  middlewares.validadeName,
+  controllers.products.update);
+
 module.exports = products;

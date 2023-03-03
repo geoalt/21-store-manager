@@ -22,8 +22,20 @@ const newProduct = async (name) => {
   return { code: 201, content };
 };
 
+const update = async (id, name) => {
+  await models.products.update(id, name);
+  const { content } = await getById(id);
+
+    if (content.message) {
+    return { code: 404, content: { message: 'Product not found' } };
+  }
+
+  return { code: 200, content };
+};
+
 module.exports = {
   getAll,
   getById,
   newProduct,
+  update,
 };
