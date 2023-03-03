@@ -39,10 +39,23 @@ const deleteProduct = async (id) => {
   if (content.message) {
     return { code: 404, content: { message: 'Product not found' } };
   }
-  
+
   await models.products.deleteProduct(id);
   
   return { code: 204, content: '' };
+};
+
+const search = async (query) => {
+  // const result = await models.products.search(query); 
+  // return { code: 200, content: result };
+
+  const result = await getAll();
+
+  console.log(result);
+  const products = result.content
+    .filter((product) => product.name.toLowerCase().includes(query.toLowerCase()));
+  
+  return { code: 200, content: products };
 };
 
 module.exports = {
@@ -51,4 +64,5 @@ module.exports = {
   newProduct,
   update,
   deleteProduct,
+  search,
 };
