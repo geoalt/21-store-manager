@@ -10,6 +10,17 @@ const registerSaleProduct = async (saleId, items) => {
   return result.insertId;
 };
 
+const updateSaleProduct = async (id, sales) => {
+  const query = `
+  UPDATE StoreManager.sales_products 
+    SET product_id = ?, quantity = ? 
+    WHERE sale_id = ?
+    AND product_id = ? `;
+  
+  console.log('ID', id, 'SALES', sales);
+  await connection.execute(query, [sales.productId, sales.quantity, id, sales.productId]);
+};
+
 const deleteSaleProduct = async (id) => {
   const query = 'DELETE FROM StoreManager.sales_products WHERE sale_id = ?';
   await connection.execute(query, [id]);
@@ -17,5 +28,6 @@ const deleteSaleProduct = async (id) => {
 
 module.exports = {
   registerSaleProduct,
+  updateSaleProduct,
   deleteSaleProduct,
 };

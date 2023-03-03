@@ -18,6 +18,13 @@ const create = async (req, res) => {
   return res.status(result.code).json(result.content);
 };
 
+const updateSaleProduct = async (req, res) => {
+  const { id } = req.params;
+  const result = await services.sales.updateSaleProduct(id, req.body);
+
+  return res.status(result.code).json(result.content);
+};
+
 const deleteSale = async (req, res) => {
   const { id } = req.params;
   const result = await services.sales.deleteSale(id);
@@ -29,5 +36,6 @@ module.exports = {
   getAll,
   getById,
   create,
+  updateSaleProduct,
   deleteSale,
 };

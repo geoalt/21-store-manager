@@ -15,6 +15,11 @@ sales.post('/',
   middlewares.validadeProductQuantity,
   controllers.sales.create);
 
+sales.put('/:id',
+  middlewares.validadeProductId,
+  middlewares.validadeProductQuantity,
+  controllers.sales.updateSaleProduct);
+
 sales.delete('/:id',
   controllers.sales.deleteSale);
 
