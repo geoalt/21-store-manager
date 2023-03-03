@@ -15,4 +15,7 @@ sales.post('/',
   middlewares.validadeProductQuantity,
   controllers.sales.create);
 
+sales.delete('/:id',
+  controllers.sales.deleteSale);
+
 module.exports = sales;

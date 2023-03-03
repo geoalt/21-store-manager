@@ -36,8 +36,21 @@ const create = async (items) => {
   } };
 };
 
+const deleteSale = async (id) => {
+  const result = await models.sales.getById(id);
+
+  if (result.length < 1) {
+    return { code: 404, content: { message: 'Sale not found' } };
+  }
+  
+  await models.salesProduct.deleteSaleProduct(id);
+  await models.sales.deleteSale(id);
+  return { code: 204, content: '' };
+};
+
 module.exports = {
   getAll,
   getById,
   create,
+  deleteSale,
 };
