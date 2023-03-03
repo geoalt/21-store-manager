@@ -6,6 +6,16 @@ const getAll = async () => {
   return { code: 200, content: result };
 };
 
+const getById = async (id) => {
+  const result = await models.sales.getById(id);
+
+  if (result.length < 1) {
+    return { code: 404, content: { message: 'Sale not found' } };
+  }
+
+  return { code: 200, content: result };
+};
+
 const create = async (items) => {
   const error = await validations.comparesIds(items);
 
@@ -28,5 +38,6 @@ const create = async (items) => {
 
 module.exports = {
   getAll,
+  getById,
   create,
 };

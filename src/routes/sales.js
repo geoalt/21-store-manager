@@ -7,6 +7,9 @@ const sales = express.Router();
 sales.get('/',
   controllers.sales.getAll);
 
+sales.get('/:id',
+  controllers.sales.getById);
+
 sales.post('/',
   middlewares.validadeProductId,
   middlewares.validadeProductQuantity,
