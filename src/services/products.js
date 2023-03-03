@@ -26,11 +26,23 @@ const update = async (id, name) => {
   await models.products.update(id, name);
   const { content } = await getById(id);
 
-    if (content.message) {
+  if (content.message) {
     return { code: 404, content: { message: 'Product not found' } };
   }
 
   return { code: 200, content };
+};
+
+const deleteProduct = async (id) => {
+  const { content } = await getById(id);
+  
+  if (content.message) {
+    return { code: 404, content: { message: 'Product not found' } };
+  }
+  
+  await models.products.deleteProduct(id);
+  
+  return { code: 204, content: '' };
 };
 
 module.exports = {
@@ -38,4 +50,5 @@ module.exports = {
   getById,
   newProduct,
   update,
+  deleteProduct,
 };

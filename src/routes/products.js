@@ -18,4 +18,7 @@ products.put('/:id',
   middlewares.validadeName,
   controllers.products.update);
 
+products.delete('/:id',
+  controllers.products.deleteProduct);
+
 module.exports = products;
