@@ -1,4 +1,4 @@
-const serviceValidItems = [
+const validItems = [
   {
     productId: 1,
     quantity: 1,
@@ -9,7 +9,7 @@ const serviceValidItems = [
   },
 ];
 
-const serviceInvalidItems = [
+const invalidItems = [
   {
     productId: 99,
     quantity: 1,
@@ -20,7 +20,11 @@ const serviceInvalidItems = [
   },
 ];
 
-const serviceUpdatedItems = [
+const validName = {
+  name: "ProdutoX",
+};
+
+const updatedItems = [
   {
     productId: 1,
     quantity: 99,
@@ -31,7 +35,7 @@ const serviceUpdatedItems = [
   },
 ];
 
-const serviceGetAll = {
+const getAll = {
   code: 200,
   content: [
     {
@@ -55,7 +59,7 @@ const serviceGetAll = {
   ],
 };
 
-const serviceGetById = {
+const getById = {
   code: 200,
   content: [
     {
@@ -71,43 +75,68 @@ const serviceGetById = {
   ],
 };
 
-const serviceInvalidGetById = {
+const invalidGetById = {
   code: 404,
   content: { message: "Sale not found" },
 };
 
-const serviceCreate = {
+const create = {
   code: 201,
   content: {
     id: 1,
-    itemsSold: serviceValidItems,
+    itemsSold: validItems,
   },
 };
 
-const serviceInvalidCreate = {
+const invalidCreate = {
   code: 404,
   content: { message: "Product not found" },
 };
 
-const serviceUpdateSaleProduct = {
+const updateSaleProduct = {
   code: 201,
   content: {
     saleId: 1,
-    itemsUpdated: serviceUpdatedItems,
+    itemsUpdated: updatedItems,
   },
 };
 
-const serviceDeleteSale = {
+const deletedItem = {
   code: 204,
   content: "",
 };
 
+const search = [
+  {
+    id: 1,
+    name: "Martelo de Thor",
+  },
+  {
+    id: 2,
+    name: "Traje de encolhimento",
+  },
+];
+
+const newProduct = {
+  id: 4,
+  name: validName.name,
+};
+
+const update = {
+  id: 1,
+  name: validName.name,
+};
+
 module.exports = {
-  serviceGetAll,
-  serviceGetById,
-  serviceCreate,
-  serviceInvalidCreate,
-  serviceInvalidItems,
-  serviceUpdateSaleProduct,
-  serviceDeleteSale,
+  getAll,
+  getById,
+  create,
+  invalidCreate,
+  invalidItems,
+  updateSaleProduct,
+  deletedItem,
+  search,
+  newProduct,
+  validName,
+  update,
 };

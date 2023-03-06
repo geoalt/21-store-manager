@@ -18,7 +18,7 @@ const getById = async (id) => {
 const newProduct = async (name) => {
   const result = await models.products.newProduct(name);
   const { content } = await getById(result);
-
+  
   return { code: 201, content };
 };
 
@@ -51,7 +51,6 @@ const search = async (query) => {
 
   const result = await getAll();
 
-  console.log(result);
   const products = result.content
     .filter((product) => product.name.toLowerCase().includes(query.toLowerCase()));
   

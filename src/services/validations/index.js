@@ -8,7 +8,7 @@ const generateIds = async () => {
 
 const comparesIds = async (sale) => {
   const idList = await generateIds();
-  
+
   for (let i = 0; i < sale.length; i += 1) {
     if (!idList.includes(sale[i].productId)) {
       return { code: 404, content: 'Product not found' };
@@ -18,4 +18,4 @@ const comparesIds = async (sale) => {
   return false;
 };
 
-module.exports = { comparesIds };
+module.exports = { comparesIds, generateIds };

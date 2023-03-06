@@ -19,13 +19,13 @@ describe("Na camada de CONTROLLERS, em SALES", function () {
       res.status = sinon.stub().returns(res);
       res.json = sinon.stub().returns();
 
-      sinon.stub(services.sales, "getAll").resolves(mocks.sales.serviceGetAll);
+      sinon.stub(services.sales, "getAll").resolves(mocks.services.getAll);
 
       // ACT
       await controllers.sales.getAll(req, res);
 
       // ASSERT
-      const { code, content } = mocks.sales.serviceGetAll;
+      const { code, content } = mocks.services.getAll;
       expect(res.status).to.have.been.calledWith(code);
       expect(res.json).to.have.been.calledWith(content);
     });
@@ -38,15 +38,13 @@ describe("Na camada de CONTROLLERS, em SALES", function () {
       res.status = sinon.stub().returns(res);
       res.json = sinon.stub().returns();
 
-      sinon
-        .stub(services.sales, "getById")
-        .resolves(mocks.sales.serviceGetById);
+      sinon.stub(services.sales, "getById").resolves(mocks.services.getById);
 
       // ACT
       await controllers.sales.getById(req, res);
 
       // ASSERT
-      const { code, content } = mocks.sales.serviceGetById;
+      const { code, content } = mocks.services.getById;
       expect(res.status).to.have.been.calledWith(code);
       expect(res.json).to.have.been.calledWith(content);
     });
@@ -61,7 +59,7 @@ describe("Na camada de CONTROLLERS, em SALES", function () {
       // ARRANGE
       const {
         content: { itemsSold: items },
-      } = mocks.sales.serviceCreate;
+      } = mocks.services.create;
 
       const req = { body: items };
       const res = {};
@@ -69,13 +67,13 @@ describe("Na camada de CONTROLLERS, em SALES", function () {
       res.status = sinon.stub().returns(res);
       res.json = sinon.stub().returns();
 
-      sinon.stub(services.sales, "create").resolves(mocks.sales.serviceCreate);
+      sinon.stub(services.sales, "create").resolves(mocks.services.create);
 
       // ACT
       await controllers.sales.create(req, res);
 
       // ASSERT
-      const { code, content } = mocks.sales.serviceCreate;
+      const { code, content } = mocks.services.create;
       expect(res.status).to.have.been.calledWith(code);
       expect(res.json).to.have.been.calledWith(content);
     });
@@ -113,13 +111,13 @@ describe("Na camada de CONTROLLERS, em SALES", function () {
 
       sinon
         .stub(services.sales, "updateSaleProduct")
-        .resolves(mocks.sales.serviceUpdateSaleProduct);
+        .resolves(mocks.services.updateSaleProduct);
 
       // ACT
       await controllers.sales.updateSaleProduct(req, res);
 
       // ASSERT
-      const { code, content } = mocks.sales.serviceUpdateSaleProduct;
+      const { code, content } = mocks.services.updateSaleProduct;
       expect(res.status).to.have.been.calledWith(code);
       expect(res.json).to.have.been.calledWith(content);
     });
@@ -136,13 +134,13 @@ describe("Na camada de CONTROLLERS, em SALES", function () {
 
       sinon
         .stub(services.sales, "deleteSale")
-        .resolves(mocks.sales.serviceDeleteSale);
+        .resolves(mocks.services.deletedItem);
 
       // ACT
       await controllers.sales.deleteSale(req, res);
 
       // ASSERT
-      const { code, content } = mocks.sales.serviceDeleteSale;
+      const { code, content } = mocks.services.deletedItem;
       expect(res.status).to.have.been.calledWith(code);
       expect(res.json).to.have.been.calledWith(content);
     });

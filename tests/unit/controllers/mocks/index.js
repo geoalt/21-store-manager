@@ -1,7 +1,5 @@
-const sales = require("./sales.mock");
-const products = require("./products.mock");
+const services = require("./services.mock");
 
 module.exports = {
-  sales,
-  products,
+  services,
 };
